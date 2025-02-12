@@ -1,0 +1,19 @@
+class Solution:
+    def maximumSum(self, nums: List[int]) -> int:
+        digit_sum = collections.defaultdict(list)
+        
+        def num_total(n):
+            total = 0
+            while n > 0:
+                total += n % 10
+                n = n // 10
+            return total
+        for num in nums:
+            d_sum = num_total(num)
+            digit_sum[d_sum].append(num)
+        res = -1
+        for k,v in digit_sum.items():
+            if len(v) >=2 :
+                v.sort()
+                res = max(res,v[-1]+v[-2])
+        return res
