@@ -1,0 +1,20 @@
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        nv = len(graph)
+        color = [0]*nv
+        for i in range(nv):
+            if color[i] != 0:
+                continue
+            q = collections.deque()
+            q.append(i)
+            color[i] = 1
+            while q:
+                ele = q.popleft()
+                for node in graph[ele]:
+                    
+                    if color[node] == 0:
+                        color[node] = -1 * color[ele]
+                        q.append(node)
+                    elif color[ele] == color[node]:
+                        return False
+        return True
