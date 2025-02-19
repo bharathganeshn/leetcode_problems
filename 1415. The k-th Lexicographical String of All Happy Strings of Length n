@@ -1,0 +1,27 @@
+class Solution:
+    def getHappyString(self, n: int, k: int) -> str:
+        q = collections.deque()
+        q.append('a')
+        q.append('b')
+        q.append('c')
+        res = []
+        while q:
+            ele = q.popleft()
+            if n == len(ele):
+                res.append(ele)
+                continue
+            if ele[-1] == 'a':
+                first = ele + 'b'
+                second = ele + 'c'
+            elif ele[-1] =='b':
+                first = ele+'a'
+                second = ele + 'c'
+            else:
+                first = ele + 'a'
+                second = ele + 'b'
+            q.append(first)
+            q.append(second)
+        if k > len(res):
+            return ""
+        return res[k-1]
+        
