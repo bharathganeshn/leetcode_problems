@@ -1,0 +1,13 @@
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        #mx = float('-inf')
+        low = 0
+        curr_sum = sum(nums[:k])
+        mx = curr_sum
+        for high in range(k,len(nums)):
+            #ele = nums[high]
+            curr_sum -= nums[low]
+            low +=1
+            curr_sum += nums[high]
+            mx = max(mx,curr_sum)
+        return float(mx/k)
