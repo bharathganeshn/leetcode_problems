@@ -1,0 +1,18 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        # d = dict()
+        # for i in arr:
+        #     if i not in d:
+        #         d[i] = 1
+        #     else:
+        #         d[i] += 1
+        # l =d.values()
+        # #print(l)
+        # return len(set(l)) == len(l)
+        
+        # Reduced Code using Counter() sub function of Dictionary
+        d = collections.Counter(arr)
+
+        res = d.values()
+
+        return len(res) == len(set(res))
