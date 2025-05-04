@@ -1,0 +1,11 @@
+class Solution:
+    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
+        n = len(dominoes)
+        res = 0
+        d = defaultdict(int)
+        
+        for i in range(n):
+            curr = (min(dominoes[i]),max(dominoes[i]))
+            res += d[curr]
+            d[curr] += 1
+        return res
