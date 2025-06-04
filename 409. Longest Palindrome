@@ -1,0 +1,17 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        d = dict()
+        res = 0
+        for i in s:
+            if i not in d:
+                d[i] = 1 
+            else:
+                del d[i]
+                res += 2
+        print(d)
+        print(res)
+
+        if len(d) == 0:
+            return res
+        else:
+            return res + 1
